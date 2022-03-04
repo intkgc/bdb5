@@ -21,4 +21,9 @@ final public class FloatNode extends Node {
     public byte getId() {
         return ID;
     }
+
+    @Override
+    public int getSize() {
+        return 4;
+    }
 }

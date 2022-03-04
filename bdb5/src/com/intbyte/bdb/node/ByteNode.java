@@ -19,4 +19,9 @@ final public class ByteNode extends Node {
     public byte getId() {
         return ID;
     }
+
+    @Override
+    public int getSize() {
+        return 1;
+    }
 }
