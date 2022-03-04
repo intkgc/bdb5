@@ -1,19 +1,21 @@
 package com.intbyte.bdb;
 
 import com.intbyte.bdb.node.*;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
 final public class DataBuffer {
     private final KeyProvider provider;
     private final ArrayList<Node> nodes;
+    private int byteArraySize;
 
     public DataBuffer(KeyProvider keyProvider){
         this.provider = keyProvider;
         this.nodes = new ArrayList<>();
     }
 
-    private void put(String key, Node node){
+    private void put(String key, @NotNull Node node){
         node.key = provider.generateKey(key);
         nodes.add(node);
     }
@@ -43,5 +45,9 @@ final public class DataBuffer {
 
     public void putLong(String key, long value){
         put(key, new LongNode(value));
+    }
+
+    public byte[] toBytes(){
+        return new byte[byteArraySize];
     }
 }

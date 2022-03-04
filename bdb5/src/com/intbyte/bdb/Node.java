@@ -1,9 +1,7 @@
 package com.intbyte.bdb;
 
-public class Node {
+public abstract class Node {
     Key key;
-    public byte[] toBytes(){
-        //TODO: Not implemented yet
-        return null;
-    }
+    public abstract byte[] toBytes();
+    public abstract byte getId();
 }
