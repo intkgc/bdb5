@@ -15,5 +15,10 @@ public class HashKeyProvider implements KeyProvider {
     public boolean compareKeys(Key key, Key secondKey) {
         return Arrays.equals(key.toBytes(), secondKey.toBytes());
     }
+
+    @Override
+    public Key createKey(byte[] bytes) {
+        return new HashKey(bytes);
+    }
 }
 
