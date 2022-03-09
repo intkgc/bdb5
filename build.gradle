@@ -1,8 +1,9 @@
 plugins {
     id 'java'
+    id 'maven-publish'
 }
 
-group 'org.jvmfrog'
+group 'com.github.JVMFrog'
 version '1.0-alpha'
 
 repositories {
@@ -17,4 +18,15 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+
+            groupId = project.group
+            artifactId = project.name
+            version = project.version
+        }
+    }
 }
