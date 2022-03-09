@@ -42,7 +42,7 @@ final public class DataBuffer {
         put(key, new FloatNode(value));
     }
 
-    public void putDouble(String key, float value) {
+    public void putDouble(String key, double value) {
         put(key, new DoubleNode(value));
     }
 
