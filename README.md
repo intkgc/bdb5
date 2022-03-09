@@ -27,6 +27,6 @@ Add dependency to project:
 ```groovy
 dependencies {
     //...
-    implementation "$curvegdx:core:$curvegdxVersion"
+    implementation 'com.github.JVMFrog:bdb5-remake:Tag'
 }
 ```
