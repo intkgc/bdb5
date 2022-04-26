@@ -161,5 +161,4 @@ final public class DataBuffer {
     public long getLong(String key){
         return ((LongNode) find(key)).value;
     }
-
 }
