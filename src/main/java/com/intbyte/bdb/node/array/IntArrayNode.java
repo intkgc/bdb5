@@ -21,12 +21,12 @@ public class IntArrayNode extends ArrayNode<int[]> {
     }
 
     @Override
-    protected int arraySize() {
+    public int sizeOfByteArray() {
         return array.length * 4;
     }
 
     @Override
     protected int getType() {
-        return ArrayNode.ID + IntNode.ID;
+        return IntNode.ID;
     }
 }

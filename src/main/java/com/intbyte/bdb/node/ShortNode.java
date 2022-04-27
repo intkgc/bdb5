@@ -8,7 +8,7 @@ final public class ShortNode extends Node {
     public static final byte ID = 6;
     public short value;
 
-    public ShortNode(short value){
+    public ShortNode(short value) {
         this.value = value;
     }
 

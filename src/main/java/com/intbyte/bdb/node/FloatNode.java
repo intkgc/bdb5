@@ -8,7 +8,7 @@ final public class FloatNode extends Node {
     public static final byte ID = 3;
     public float value;
 
-    public FloatNode(float value){
+    public FloatNode(float value) {
         this.value = value;
     }
 

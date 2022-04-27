@@ -8,7 +8,7 @@ final public class DoubleNode extends Node {
     public static final byte ID = 2;
     public double value;
 
-    public DoubleNode(double value){
+    public DoubleNode(double value) {
         this.value = value;
     }
 

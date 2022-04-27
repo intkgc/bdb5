@@ -3,7 +3,6 @@ package com.intbyte.bdb.node.array;
 import com.intbyte.bdb.node.ShortNode;
 
 import java.nio.ByteBuffer;
-import java.nio.ShortBuffer;
 
 
 public class ShortArrayNode extends ArrayNode<short[]> {
@@ -23,12 +22,12 @@ public class ShortArrayNode extends ArrayNode<short[]> {
     }
 
     @Override
-    protected int arraySize() {
+    public int sizeOfByteArray() {
         return array.length*2;
     }
 
     @Override
     protected int getType() {
-        return ArrayNode.ID + ShortNode.ID;
+        return ShortNode.ID;
     }
 }

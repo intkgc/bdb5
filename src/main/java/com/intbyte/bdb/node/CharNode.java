@@ -8,7 +8,7 @@ final public class CharNode extends Node {
     public static final byte ID = 1;
     public char value;
 
-    public CharNode(char value){
+    public CharNode(char value) {
         this.value = value;
     }
 

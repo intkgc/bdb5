@@ -21,12 +21,12 @@ public class DoubleArrayNode extends ArrayNode<double[]> {
     }
 
     @Override
-    protected int arraySize() {
+    public int sizeOfByteArray() {
         return array.length * 8;
     }
 
     @Override
     protected int getType() {
-        return ArrayNode.ID + DoubleNode.ID;
+        return DoubleNode.ID;
     }
 }

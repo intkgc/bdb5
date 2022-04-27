@@ -3,19 +3,19 @@ package com.intbyte.bdb.node.array;
 import java.nio.ByteBuffer;
 
 public abstract class ArrayNode<T> {
-    public static final byte ID = 6;
     public T array;
 
     protected int pointer = 0;
 
     protected abstract void convertToByteArray(ByteBuffer buffer);
-    protected abstract int arraySize();
+    public abstract int sizeOfByteArray();
     protected abstract int getType();
 
     public void putToArrayBuffer(ByteBuffer byteBuffer){
-        byteBuffer.put((byte) getType());
-        byteBuffer.putInt(arraySize());
+        byteBuffer.putInt(getType());
+        byteBuffer.putInt(sizeOfByteArray());
         convertToByteArray(byteBuffer);
+        return;
     }
 
     public ArrayNode(int pointer){

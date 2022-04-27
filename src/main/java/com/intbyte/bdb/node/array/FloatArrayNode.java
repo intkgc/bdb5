@@ -20,12 +20,12 @@ public class FloatArrayNode extends ArrayNode<float[]> {
     }
 
     @Override
-    protected int arraySize() {
+    public int sizeOfByteArray() {
         return array.length * 4;
     }
 
     @Override
     protected int getType() {
-        return ArrayNode.ID + FloatNode.ID;
+        return FloatNode.ID;
     }
 }

@@ -21,12 +21,12 @@ public class LongArrayNode extends ArrayNode<long[]> {
     }
 
     @Override
-    protected int arraySize() {
+    public int sizeOfByteArray() {
         return array.length * 8;
     }
 
     @Override
     protected int getType() {
-        return ArrayNode.ID + LongNode.ID;
+        return LongNode.ID;
     }
 }

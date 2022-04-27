@@ -11,13 +11,21 @@ class HashDataBufferTest {
 
     {
         buffer = new DataBuffer(new HashKeyProvider());
-        buffer.putChar("char", 'v');
-        buffer.putByte("byte", (byte) 10);
-        buffer.putShort("short", (short) 10);
-        buffer.putInt("int", 10);
-        buffer.putFloat("float", 10.0f);
-        buffer.putDouble("double", 10.0);
-        buffer.putLong("long", 10);
+        buffer.put("char", 'v');
+        buffer.put("byte", (byte) 10);
+        buffer.put("short", (short) 10);
+        buffer.put("int", 10);
+        buffer.put("float", 10.0f);
+        buffer.put("double", 10.0);
+        buffer.put("long", 10L);
+
+
+        buffer.put("byteArray", new byte[]{7});
+        buffer.put("shortArray", new short[]{7});
+        buffer.put("intArray", new int[]{7});
+        buffer.put("floatArray", new float[]{7});
+        buffer.put("doubleArray", new double[]{7});
+        buffer.put("longArray", new long[]{7});
     }
 
 
@@ -31,6 +39,8 @@ class HashDataBufferTest {
         assertTrue(buffer.contains("float"));
         assertTrue(buffer.contains("double"));
         assertTrue(buffer.contains("long"));
+
+        assertEquals(0, buffer.getInt("byteArray"));
     }
 
     @Test
@@ -75,5 +85,16 @@ class HashDataBufferTest {
     @Test
     void getLong() {
         assertEquals(buffer.getLong("long"), 10);
+    }
+
+    @Test
+    void getArray() {
+
+        assertArrayEquals(buffer.getArray("byteArray"), new byte[]{7});
+        assertArrayEquals(buffer.getArray("shortArray"), new short[]{7});
+        assertArrayEquals(buffer.getArray("floatArray"), new float[]{7});
+        assertArrayEquals(buffer.getArray("doubleArray"), new double[]{7});
+        assertArrayEquals(buffer.getArray("intArray"), new int[]{7});
+        assertArrayEquals(buffer.getArray("longArray"), new long[]{7});
     }
 }

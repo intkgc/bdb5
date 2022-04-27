@@ -4,14 +4,15 @@ import com.intbyte.bdb.node.ByteNode;
 
 import java.nio.ByteBuffer;
 
-public class ByteArrayNode extends ArrayNode<byte[]> { ;
+public class ByteArrayNode extends ArrayNode<byte[]> {
+    ;
 
     public ByteArrayNode(byte[] array, int pointer) {
         super(pointer);
         this.array = array;
     }
 
-    public ByteArrayNode(byte[] array){
+    public ByteArrayNode(byte[] array) {
         super(array);
     }
 
@@ -21,12 +22,12 @@ public class ByteArrayNode extends ArrayNode<byte[]> { ;
     }
 
     @Override
-    protected int arraySize() {
+    public int sizeOfByteArray() {
         return array.length;
     }
 
     @Override
     protected int getType() {
-        return ArrayNode.ID + ByteNode.ID;
+        return ByteNode.ID;
     }
 }
