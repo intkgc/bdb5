@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'com.github.JVMFrog'
-version '1.0-alpha'
+version '1.1-beta'
 
 repositories {
     mavenCentral()
