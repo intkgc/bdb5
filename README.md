@@ -2,7 +2,7 @@
 
 # bdb5-remake
 
-[![stability-alpha](https://img.shields.io/badge/stability-alpha-f4d03f.svg)](https://github.com/mkenney/software-guides/blob/master/STABILITY-BADGES.md#alpha)
+[![stability-beta](https://img.shields.io/badge/stability-alpha-f4d03f.svg)](https://github.com/mkenney/software-guides/blob/master/STABILITY-BADGES.md#alpha)
 [![](https://jitpack.io/v/JVMFrog/bdb5-remake.svg)](https://jitpack.io/#JVMFrog/bdb5-remake)
 
 ### bdb is a small library for storing data in the form of binary objects
