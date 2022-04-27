@@ -4,12 +4,15 @@ import com.intbyte.bdb.node.LongNode;
 
 import java.nio.ByteBuffer;
 
-public class LongArrayNode extends ArrayNode {
-    private final long[] array;
+public class LongArrayNode extends ArrayNode<long[]> {
 
     public LongArrayNode(long[] array, int pointer) {
-        super(ArrayNode.ID + LongNode.ID, pointer);
+        super(pointer);
         this.array = array;
+    }
+
+    public LongArrayNode(long[] array) {
+        super(array);
     }
 
     @Override
@@ -20,5 +23,10 @@ public class LongArrayNode extends ArrayNode {
     @Override
     protected int arraySize() {
         return array.length * 8;
+    }
+
+    @Override
+    protected int getType() {
+        return ArrayNode.ID + LongNode.ID;
     }
 }

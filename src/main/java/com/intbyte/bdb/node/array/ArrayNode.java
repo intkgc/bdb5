@@ -2,27 +2,27 @@ package com.intbyte.bdb.node.array;
 
 import java.nio.ByteBuffer;
 
-public abstract class ArrayNode {
+public abstract class ArrayNode<T> {
     public static final byte ID = 6;
+    public T array;
 
-    protected int type = 0;
     protected int pointer = 0;
 
     protected abstract void convertToByteArray(ByteBuffer buffer);
     protected abstract int arraySize();
+    protected abstract int getType();
 
     public void putToArrayBuffer(ByteBuffer byteBuffer){
-        byteBuffer.putInt(type);
+        byteBuffer.put((byte) getType());
         byteBuffer.putInt(arraySize());
         convertToByteArray(byteBuffer);
     }
 
-    public ArrayNode(int type, int pointer){
-        this.type = type;
+    public ArrayNode(int pointer){
         this.pointer = pointer;
     }
 
-    public int getType() {
-        return type;
+    public ArrayNode(T array){
+        this.array = array;
     }
 }

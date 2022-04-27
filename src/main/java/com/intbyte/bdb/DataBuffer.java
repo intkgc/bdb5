@@ -4,12 +4,14 @@ import com.intbyte.bdb.node.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 import java.util.ArrayList;
 
 final public class DataBuffer {
     private final KeyProvider provider;
     private final ArrayList<Node> nodes;
     private int byteArraySize;
+    private ArrayBuffer arrayBuffer = new ArrayBuffer();
 
     public DataBuffer(KeyProvider keyProvider) {
         this.provider = keyProvider;
@@ -51,8 +53,12 @@ final public class DataBuffer {
     }
 
     public byte[] toBytes() {
-        byte[] bytes = new byte[byteArraySize];
-        int index = 0;
+        byte[] arrayBufferData = arrayBuffer.toBytes();
+        byte[] bytes = new byte[byteArraySize + arrayBufferData.length + 4];
+        ByteBuffer.wrap(bytes).putInt(arrayBufferData.length);
+        System.arraycopy(arrayBufferData, 0, bytes, 4, arrayBufferData.length);
+
+        int index = arrayBufferData.length + 4;
         for (Node node : nodes) {
             int length = node.key.toBytes().length;
             bytes[index++] = node.getId();
@@ -65,13 +71,23 @@ final public class DataBuffer {
     }
 
 
+    public void clear(){
+        byteArraySize = 0;
+        nodes.clear();
+        arrayBuffer.clear();
+    }
+
     public void readBytes(byte[] bytes) {
         byte[] byteKey = new byte[4];
         byte[] value = new byte[8];
 
-        byteArraySize = 0;
-        nodes.clear();
-        int index = 0;
+        clear();
+
+        ByteBuffer arrayByteBuffer = ByteBuffer.wrap(bytes);
+        int arrayBufferSize = arrayByteBuffer.getInt();
+        arrayBuffer.readByteBuffer(arrayBufferSize, arrayByteBuffer);
+
+        int index = 4 + arrayBufferSize;
 
         while (index < bytes.length) {
             int id = bytes[index++];

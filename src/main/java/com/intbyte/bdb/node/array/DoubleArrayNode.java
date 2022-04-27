@@ -4,12 +4,15 @@ import com.intbyte.bdb.node.DoubleNode;
 
 import java.nio.ByteBuffer;
 
-public class DoubleArrayNode extends ArrayNode {
-    private final double[] array;
+public class DoubleArrayNode extends ArrayNode<double[]> {
 
     public DoubleArrayNode(double[] array, int pointer) {
-        super(ArrayNode.ID + DoubleNode.ID, pointer);
+        super(pointer);
         this.array = array;
+    }
+
+    public DoubleArrayNode(double[] array) {
+        super(array);
     }
 
     @Override
@@ -20,5 +23,10 @@ public class DoubleArrayNode extends ArrayNode {
     @Override
     protected int arraySize() {
         return array.length * 8;
+    }
+
+    @Override
+    protected int getType() {
+        return ArrayNode.ID + DoubleNode.ID;
     }
 }
