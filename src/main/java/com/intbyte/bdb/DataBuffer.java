@@ -59,6 +59,10 @@ final public class DataBuffer {
         put(key, arrayBuffer.put(array));
     }
 
+    public void put(String key, char[] array) {
+        put(key, arrayBuffer.put(array));
+    }
+
     public void put(String key, int[] array) {
         put(key, arrayBuffer.put(array));
     }

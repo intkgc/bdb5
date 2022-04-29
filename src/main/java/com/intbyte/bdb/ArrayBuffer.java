@@ -1,13 +1,7 @@
 package com.intbyte.bdb;
 
 import com.intbyte.bdb.node.*;
-import com.intbyte.bdb.node.array.ArrayNode;
-import com.intbyte.bdb.node.array.ByteArrayNode;
-import com.intbyte.bdb.node.array.DoubleArrayNode;
-import com.intbyte.bdb.node.array.FloatArrayNode;
-import com.intbyte.bdb.node.array.IntArrayNode;
-import com.intbyte.bdb.node.array.LongArrayNode;
-import com.intbyte.bdb.node.array.ShortArrayNode;
+import com.intbyte.bdb.node.array.*;
 
 import java.nio.*;
 import java.util.ArrayList;
@@ -29,6 +23,10 @@ public class ArrayBuffer {
 
     public int put(short[] array) {
         return put(new ShortArrayNode(array, size));
+    }
+
+    public int put(char[] array) {
+        return put(new CharArrayNode(array, size));
     }
 
     public int put(int[] array) {
@@ -71,6 +69,12 @@ public class ArrayBuffer {
                 case ShortNode.ID: {
                     short[] array = new short[size / 2];
                     byteBuffer.asShortBuffer().get(array);
+                    put(array);
+                    break;
+                }
+                case CharNode.ID: {
+                    char[] array = new char[size / 2];
+                    byteBuffer.asCharBuffer().get(array);
                     put(array);
                     break;
                 }
