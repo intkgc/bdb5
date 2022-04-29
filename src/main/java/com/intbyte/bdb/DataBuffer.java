@@ -12,6 +12,7 @@ final public class DataBuffer {
     private int byteArraySize;
     private ArrayBuffer arrayBuffer = new ArrayBuffer();
 
+
     public DataBuffer(KeyProvider keyProvider) {
         this.provider = keyProvider;
         this.nodes = new ArrayList<>();
