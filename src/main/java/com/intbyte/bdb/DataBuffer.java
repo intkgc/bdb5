@@ -4,6 +4,7 @@ import com.intbyte.bdb.node.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.nio.ByteBuffer;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 final public class DataBuffer {
@@ -78,6 +79,10 @@ final public class DataBuffer {
 
     public void put(String key, long[] array) {
         put(key, arrayBuffer.put(array));
+    }
+
+    public void put(String key, String value) {
+        put(key, value.getBytes(StandardCharsets.UTF_8));
     }
 
     public byte[] toBytes() {
@@ -208,5 +213,10 @@ final public class DataBuffer {
 
     public <T> T getArray(String key){
         return (T) arrayBuffer.getNode(getInt(key)).array;
+    }
+
+    public String getString(String key) {
+        byte[] bytes = getArray(key);
+        return new String(bytes);
     }
 }
