@@ -19,7 +19,8 @@ public class CharArrayNode extends ArrayNode<char[]> {
 
     @Override
     protected void convertToByteArray(ByteBuffer buffer) {
-        buffer.asCharBuffer().put(array);
+        for (char i: array)
+            buffer.putChar(i);
     }
 
     @Override

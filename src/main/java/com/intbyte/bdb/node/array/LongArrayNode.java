@@ -17,7 +17,9 @@ public class LongArrayNode extends ArrayNode<long[]> {
 
     @Override
     protected void convertToByteArray(ByteBuffer buffer) {
-        buffer.asLongBuffer().put(array);
+        for (long i : array) {
+            buffer.putLong(i);
+        }
     }
 
     @Override

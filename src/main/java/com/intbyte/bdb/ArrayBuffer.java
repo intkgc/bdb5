@@ -56,11 +56,13 @@ public class ArrayBuffer {
 
 
         while (index < bytesCount) {
+            boolean isNeedUpdatePosition = true;
             int type = byteBuffer.getInt();
             int size = byteBuffer.getInt();
 
             switch (type) {
                 case ByteNode.ID: {
+                    isNeedUpdatePosition = false;
                     byte[] array = new byte[size];
                     byteBuffer.get(array);
                     put(array);
@@ -103,6 +105,8 @@ public class ArrayBuffer {
                     break;
                 }
             }
+            if(isNeedUpdatePosition)
+                byteBuffer.position(byteBuffer.position()+size);
             index += 8 + size;
         }
     }

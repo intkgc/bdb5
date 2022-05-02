@@ -18,7 +18,8 @@ public class ShortArrayNode extends ArrayNode<short[]> {
 
     @Override
     protected void convertToByteArray(ByteBuffer buffer) {
-        buffer.asShortBuffer().put(array);
+        for (short value : array)
+            buffer.putShort(value);
     }
 
     @Override

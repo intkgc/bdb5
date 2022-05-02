@@ -16,7 +16,9 @@ public class FloatArrayNode extends ArrayNode<float[]> {
     }
     @Override
     protected void convertToByteArray(ByteBuffer buffer) {
-        buffer.asFloatBuffer().put(array);
+        for (float i : array) {
+            buffer.putFloat(i);
+        }
     }
 
     @Override

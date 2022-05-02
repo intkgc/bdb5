@@ -17,7 +17,9 @@ public class DoubleArrayNode extends ArrayNode<double[]> {
 
     @Override
     protected void convertToByteArray(ByteBuffer buffer) {
-        buffer.asDoubleBuffer().put(array);
+        for (double i : array) {
+            buffer.putDouble(i);
+        }
     }
 
     @Override

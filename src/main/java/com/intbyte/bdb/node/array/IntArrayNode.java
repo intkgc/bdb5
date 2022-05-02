@@ -17,7 +17,9 @@ public class IntArrayNode extends ArrayNode<int[]> {
 
     @Override
     protected void convertToByteArray(ByteBuffer buffer) {
-        buffer.asIntBuffer().put(array);
+        for (int i : array) {
+            buffer.putInt(i);
+        }
     }
 
     @Override
