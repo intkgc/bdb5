@@ -219,4 +219,13 @@ final public class DataBuffer {
         byte[] bytes = getArray(key);
         return new String(bytes);
     }
+
+    public void put(String name, DataBuffer buffer) {
+        put(name, buffer.toBytes());
+    }
+
+    public DataBuffer getDataBuffer(String name) {
+        return new DataBuffer(getArray(name));
+    }
+
 }
